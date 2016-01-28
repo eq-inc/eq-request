@@ -1,0 +1,14 @@
+{
+  "name": "eq-request",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Kazuma Fujimaki <fujimaki@eq-inc.jp>",
+  "dependencies": {
+    "lodash": ">=3.10.1",
+    "superagent": ">=1.7.2"
+  },
+  "devDependencies": {
+    "mocha": ">=2.3.3",
+    "expect.js": ">=0.3.1"
+  }
+}
