@@ -73,47 +73,85 @@ describe('EqRequest', function () {
     });
 
     describe('get', function () {
-        it('Should send get request', function (done) {
-            const client = request(),
-                data = {data: 'Test'},
-                test = 'test.get';
-            client.setHeader('x-test', test);
-            client.get(url, data, function (error, result) {
-                if (error) {
-                    return done(error);
-                }
+        describe('Should send get request', function () {
+            it('Promise', function (done) {
+                const client = request(),
+                    data = {data: 'Test'},
+                    test = 'test.get';
+                client.setHeader('x-test', test);
+                client.get(url, data).then(function (result) {
+                    expect(result.body).to.eql({
+                        method: 'GET',
+                        query: 'data=Test',
+                        data: '',
+                        test: test
+                    });
 
-                expect(result.body).to.eql({
-                    method: 'GET',
-                    query: 'data=Test',
-                    data: '',
-                    test: test
+                    done();
                 });
+            });
 
-                done();
+            it('Callback', function (done) {
+                const client = request(),
+                    data = {data: 'Test'},
+                    test = 'test.get';
+                client.setHeader('x-test', test);
+                client.get(url, data, function (error, result) {
+                    if (error) {
+                        return done(error);
+                    }
+
+                    expect(result.body).to.eql({
+                        method: 'GET',
+                        query: 'data=Test',
+                        data: '',
+                        test: test
+                    });
+
+                    done();
+                });
             });
         });
     });
 
     describe('post', function () {
-        it('Should send post request', function (done) {
-            const client = request(),
-                data = 'Test',
-                test = 'test.post';
-            client.setHeader('x-test', test);
-            client.post(url, data, function (error, result) {
-                if (error) {
-                    return done(error);
-                }
+        describe('Should send post request', function () {
+            it('Promise', function (done) {
+                const client = request(),
+                    data = 'Test',
+                    test = 'test.post';
+                client.setHeader('x-test', test);
+                client.post(url, data).then(function (result) {
+                    expect(result.body).to.eql({
+                        method: 'POST',
+                        query: '',
+                        data: data,
+                        test: test
+                    });
 
-                expect(result.body).to.eql({
-                    method: 'POST',
-                    query: '',
-                    data: data,
-                    test: test
+                    done();
                 });
+            });
 
-                done();
+            it('Callback', function (done) {
+                const client = request(),
+                    data = 'Test',
+                    test = 'test.post';
+                client.setHeader('x-test', test);
+                client.post(url, data, function (error, result) {
+                    if (error) {
+                        return done(error);
+                    }
+
+                    expect(result.body).to.eql({
+                        method: 'POST',
+                        query: '',
+                        data: data,
+                        test: test
+                    });
+
+                    done();
+                });
             });
         });
     });
