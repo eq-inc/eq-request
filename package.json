@@ -1,6 +1,6 @@
 {
     "name": "eq-request",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Request module for eq-mock",
     "homepage": "https://github.com/eq-inc/eq-request",
     "license": "Apache-2.0",
@@ -14,7 +14,6 @@
         "test": "./node_modules/.bin/mocha ./test"
     },
     "dependencies": {
-        "lodash": ">=4.11.1",
         "superagent": ">=1.8.3"
     },
     "devDependencies": {
